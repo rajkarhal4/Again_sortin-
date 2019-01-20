@@ -1,0 +1,20 @@
+def partition(ls,low,high):
+    i=low-1
+    pivot=ls[high]
+    for j in range(low,high):
+        if ls[j]<=pivot:
+            i=i+1
+            ls[i],ls[j]=ls[j],ls[i]
+    ls[i+1],ls[high]=ls[high],ls[i+1]
+    return i+1
+
+def quick(ls,low,high):
+    if low<high:
+        pi=partition(ls,low,high)
+        quick(ls,low,pi-1)
+        quick(ls,pi+1,high)
+
+
+ls=[10, 7, 8, 9, 1, 5]
+quick(ls,0,len(ls)-1)
+print(ls)
